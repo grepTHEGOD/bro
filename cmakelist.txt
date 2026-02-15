@@ -1,0 +1,54 @@
+# bro/CMakeLists.txt
+cmake_minimum_required(VERSION 3.20)
+project(bro C)
+
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+find_package(ZLIB REQUIRED)
+find_package(Curses REQUIRED)
+
+add_compile_options(-Wall -Wextra -O2)
+
+add_executable(bro
+    src/main.c
+    src/core/sha1.c src/core/zlib_utils.c
+    src/core/object.c src/core/blob.c src/core/tree.c src/core/commit.c src/core/odb.c
+    src/repo.c
+    src/index/index.c
+    src/refs/refs.c
+    src/remote/remote.c
+    src/util/util.c
+
+    # ALL COMMANDS (stubs + the two big ones)
+    src/commands/init.c
+    src/commands/slap.c src/commands/yeet.c src/commands/vibe-check.c
+    src/commands/yap.c src/commands/steal.c src/commands/teleport.c
+    src/commands/squad.c src/commands/launch.c src/commands/absorb.c
+    src/commands/yoink.c src/commands/fuse.c src/commands/rewind.c
+    src/commands/undo-vibes.c src/commands/oopsie.c src/commands/roast.c
+    src/commands/delete-bro.c src/commands/yeet-file.c src/commands/drip.c
+    src/commands/hide.c src/commands/scrub.c src/commands/clean-house.c
+    src/commands/detective.c src/commands/snitch.c src/commands/search-bro.c
+    src/commands/expose.c src/commands/summary.c src/commands/nickname.c
+    src/commands/yoink-cherry.c src/commands/patch-mail.c src/commands/apply-mail.c
+    src/commands/sticky-note.c src/commands/sidekick.c src/commands/multiverse.c
+    src/commands/only-fans.c src/commands/zip-pack.c src/commands/range-roast.c
+    src/commands/grep-it.c src/commands/blame-grep.c src/commands/config-vibe.c
+    src/commands/ignore-bro.c src/commands/ls-bro.c src/commands/reflog-yap.c
+    src/commands/amend-yeet.c src/commands/unstage-slap.c src/commands/hard-undo.c
+    src/commands/soft-undo.c src/commands/force-launch.c src/commands/rip-branch.c
+    src/commands/new-squad.c src/commands/who-dis.c src/commands/time-machine.c
+    src/commands/panic-revert.c src/commands/diff-bro.c src/commands/untrack-bro.c
+    src/commands/archive-vibes.c src/commands/bro-doctor.c
+    src/commands/hash-slap.c src/commands/peek.c
+    src/commands/tui.c          # ← THE BIG ONE
+    src/commands/live.c         # ← IDE server mode
+)
+
+target_include_directories(bro PRIVATE src src/core src/index src/refs src/remote src/util src/commands)
+target_link_libraries(bro PRIVATE ZLIB::ZLIB ${CURSES_LIBRARIES})
+
+
+
