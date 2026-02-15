@@ -5,6 +5,14 @@
 #include <string.h>
 
 int cmd_init(int argc, char **argv) {
+    struct stat st;
+    int error = stat(".bro", &st);
+    if (error == 0) {
+        if (S_ISDIR(st.st_mode)) {
+            printf("Folder already exists, bro");
+            return 1;
+        }
+    }
     // Create .bro directory
     if (mkdir(".bro", 0755) != 0 && errno != EEXIST) {
         perror("Failed to create .bro");
