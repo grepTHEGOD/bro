@@ -4,9 +4,21 @@
 #include <stdlib.h>
 
 int cmd_init(int argc, char **argv);
-int cmd_hash_slap(int argc, char **argv);
-int cmd_peek(int argc, char **argv);
-int cmd_vibe_check(int argc, char **argv);
+
+int cmd_hash_slap(int argc, char **argv) {
+    printf("hash-slap: coming soon bro \n");
+    return 0;
+}
+
+int cmd_peek(int argc, char **argv) {
+    printf("peek: coming soon bro \n");
+    return 0;
+}
+
+int cmd_vibe_check(int argc, char **argv) {
+    printf("vibe-check: coming soon bro \n");
+    return 0;
+}
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
