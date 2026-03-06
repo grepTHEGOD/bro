@@ -1,0 +1,3 @@
+/home/grep/bro/CMakeFiles/bro.dir
+/home/grep/bro/CMakeFiles/edit_cache.dir
+/home/grep/bro/CMakeFiles/rebuild_cache.dir
