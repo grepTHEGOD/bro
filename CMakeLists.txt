@@ -34,7 +34,7 @@ add_executable(bro
     src/commands/expose.c src/commands/summary.c src/commands/nickname.c
     src/commands/yoink-cherry.c src/commands/patch-mail.c src/commands/apply-mail.c
     src/commands/sticky-note.c src/commands/sidekick.c src/commands/multiverse.c
-    src/commands/only-fans.c src/commands/zip-pack.c src/commands/range-roast.c
+     src/commands/zip-pack.c src/commands/range-roast.c
     src/commands/grep-it.c src/commands/blame-grep.c src/commands/config-vibe.c
     src/commands/ignore-bro.c src/commands/ls-bro.c src/commands/reflog-yap.c
     src/commands/amend-yeet.c src/commands/unstage-slap.c src/commands/hard-undo.c
