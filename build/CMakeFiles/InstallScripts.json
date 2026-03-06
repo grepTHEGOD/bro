@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/grep/bro/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

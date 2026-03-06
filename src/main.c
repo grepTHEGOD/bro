@@ -9,10 +9,13 @@ int cmd_init(int argc, char **argv);
 int cmd_hash_slap(int argc, char **argv);
 int cmd_peek(int argc, char **argv);
 int cmd_vibe_check(int argc, char **argv);
+int cmd_launch(int argc, char **argv);
+int cmd_tui(int argc, char **argv);
+int cmd_live(int argc, char **argv);
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
-        puts("bro: missing command lil bro\nKnown moves: init, hash-slap, peek, vibe-check");
+        puts("bro: missing command lil bro\nKnown moves: init, hash-slap, peek, vibe-check, launch, tui, live");
         return 1;
     }
 
@@ -29,6 +32,15 @@ int main(int argc, char *argv[]) {
     }
     if (strcmp(cmd, "vibe-check") == 0) {
         return cmd_vibe_check(argc - 1, argv + 1);
+    }
+    if (strcmp(cmd, "launch") == 0) {
+        return cmd_launch(argc - 1, argv + 1);
+    }
+    if (strcmp(cmd, "tui") == 0) {
+        return cmd_tui(argc - 1, argv + 1);
+    }
+    if (strcmp(cmd, "live") == 0) {
+        return cmd_live(argc - 1, argv + 1);
     }
 
     fprintf(stderr, "bro: '%s' not recognized... yet 😈\n", cmd);

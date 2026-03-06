@@ -16,10 +16,10 @@ add_executable(bro
     src/core/sha1.c src/core/zlib_utils.c
     src/core/object.c src/core/blob.c src/core/tree.c src/core/commit.c src/core/odb.c
     src/repo.c
-    src/index/index.c
-    src/refs/refs.c
-    src/remote/remote.c
-    src/util/util.c
+    src/index.c
+    src/refs.c
+    src/remote.c
+    src/util.c
 
     # ALL COMMANDS (stubs + the two big ones)
     src/commands/init.c
