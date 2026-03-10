@@ -39,13 +39,9 @@ int cmd_init(int argc, char **argv) {
     
     snprintf(dir, sizeof(dir), "%s/.bro/config", path);
     f = fopen(dir, "w");
-    fprintf(f, "[core]\n\trepositoryformatversion = 0\n");
+    fprintf(f, "[core]\n\trepositoryformatversion = 0\n\tfilemode = true\n\tbare = false\n");
     fclose(f);
-    
-    snprintf(dir, sizeof(dir), "%s/.bro/info/exclude", path);
-    f = fopen(dir, "w");
-    fclose(f);
-    
+
     printf("Initialized empty bro repository in %s/.bro/\n", path);
     return 0;
 }
