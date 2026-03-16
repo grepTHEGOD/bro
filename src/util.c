@@ -18,6 +18,10 @@ char *bro_strjoin(const char *a, const char *b) {
     return result;
 }
 
+int has_prefix(const char *str, const char *prefix) {
+    return strncmp(str, prefix, strlen(prefix)) == 0;
+}
+
 int bro_file_exists(const char *path) {
     struct stat st;
     return stat(path, &st) == 0;

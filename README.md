@@ -16,6 +16,17 @@ make
 make
 ```
 
+### Installing with CMake
+
+```bash
+# System-wide installation
+sudo cmake --install . --prefix /usr
+
+# Or using make install
+cd build
+sudo make install
+```
+
 This will produce the `bro` executable.
 
 ## Quick Start
@@ -155,7 +166,12 @@ Here's the full command reference. Every bro command maps to a git command:
 bro tui
 ```
 
-Launch an interactive terminal UI (similar to tig or lazygit) for a visual git experience.
+Launch an interactive terminal UI (similar to tig or lazygit) for a visual git experience with:
+- Branch graph visualization
+- Multiple views: Commits, Branches, Stashes, Remotes, Stats
+- Sidebar with quick actions
+- Detail panel for selected items
+- Keyboard navigation (j/k for up/down, 1-5 for views)
 
 #### Live Server (IDE Integration)
 
@@ -164,6 +180,77 @@ bro live
 ```
 
 Start a background server mode for IDE integration (similar to a Git Language Server).
+
+#### broIDE - Vim-Based IDE
+
+```bash
+bro vim-ide
+```
+
+Launch a full-featured integrated development environment with:
+- **File Explorer**: Browse and navigate project files
+- **Tab Management**: Open multiple files in tabs
+- **Vim-style Navigation**: h/j/k/l for cursor movement, i for insert mode
+- **Built-in Terminal**: Run commands without leaving the editor
+- **Status Bar**: Show cursor position, file status, mode
+- **Syntax Highlighting**: Color-coded code display
+
+Controls:
+- `F1` - Toggle terminal
+- `F2` - Files view
+- `F3` - Search
+- `Tab` - Switch tabs
+- `Enter` - Open file
+- `:w` - Save file
+- `q` - Quit
+
+#### broManager - Milanote-Style Project Editor
+
+```bash
+bro milanote
+```
+
+Open a visual Kanban-style project board editor with:
+- **Multiple Boards**: TODO, IN PROGRESS, DONE columns
+- **Card Management**: Create, edit, delete, prioritize cards
+- **Task Tracking**: Mark tasks complete, track progress
+- **Visual Layout**: Cards displayed in columns with descriptions
+- **Progress Stats**: See completion percentage at a glance
+
+Controls:
+- `j/k` or `↑/↓` - Navigate cards
+- `h/l` or `←/→` - Switch boards
+- `Tab` - Next board
+- `1/2/3` - Jump to specific board
+- `n` - New card
+- `e` - Edit/cycle priority
+- `d` - Delete card
+- `Space` - Toggle done
+
+#### broMail - Thunderbird Email Integration
+
+```bash
+bro thunderbird
+```
+
+Access email functionality for patch management and collaboration with:
+- **Folder Navigation**: Inbox, Sent, Drafts, Trash, Archive, Junk
+- **Email List**: View emails with sender, subject, timestamp
+- **Email Preview**: Read full email content
+- **Compose**: Write and send new emails
+- **Actions**: Reply, Forward, Flag, Star, Delete
+- **Unread Tracking**: Show unread counts per folder
+
+Controls:
+- `j/k` or `↑/↓` - Navigate emails
+- `←/→` or `g/$` - Switch folders
+- `c` - Compose new email
+- `r` - Reply
+- `d` - Delete
+- `f` - Flag
+- `s` - Star
+- `u` - Toggle read/unread
+- `q` - Quit
 
 ## Configuration
 

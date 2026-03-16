@@ -7,6 +7,8 @@
 #include <ctype.h>
 #include <stdbool.h>
 
+extern int has_prefix(const char *str, const char *prefix);
+
 #define BUFFER_SIZE 65536
 
 typedef struct {
@@ -81,10 +83,6 @@ int read_content(char *buffer, size_t max_size) {
     buffer[content_length] = '\0';
     
     return content_length;
-}
-
-int has_prefix(const char *str, const char *prefix) {
-    return strncmp(str, prefix, strlen(prefix)) == 0;
 }
 
 json_object *parse_position(json_object *params) {
@@ -209,7 +207,7 @@ void handle_text_document_definition(json_object *params) {
     json_object *result = json_object_new_array();
     
     json_object *location = json_object_new_object();
-    json_object_object_add(location, "uri", json_object_get_string(uri));
+    json_object_object_add(location, "uri", json_object_new_string(json_object_get_string(uri)));
     
     json_object *range = json_object_new_object();
     json_object_object_add(range, "start", json_object_get(pos));

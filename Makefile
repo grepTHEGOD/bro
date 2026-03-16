@@ -1,9 +1,10 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -g -Isrc
-LDFLAGS = -lz
+LDFLAGS = -lz -ljson-c -lncurses -lcurl
 
 SRC = src/main.c \
       src/util.c \
+      src/github.c \
       src/repo.c \
       src/refs.c \
       src/index.c \
@@ -65,7 +66,6 @@ SRC = src/main.c \
       src/commands/sticky-note.c \
       src/commands/sidekick.c \
       src/commands/multiverse.c \
-      src/commands/only-fans.c \
       src/commands/zip-pack.c \
       src/commands/range-roast.c \
       src/commands/archive-vibes.c \

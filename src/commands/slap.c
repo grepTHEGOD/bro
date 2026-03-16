@@ -11,6 +11,7 @@ extern char *bro_read_file(const char *path, size_t *len);
 extern int bro_mkdir(const char *path);
 extern void bro_oid_from_string(bro_oid *oid, const char *str);
 extern char *bro_oid_to_string(const bro_oid *oid);
+extern int bro_odb_write(const void *data, size_t size, bro_oid *oid, int type);
 
 typedef struct {
     uint32_t h[5];
@@ -91,33 +92,7 @@ static int write_blob(const char *path, bro_oid *oid) {
         return -1;
     }
 
-    char header[64];
-    int header_len = snprintf(header, sizeof(header), "%d %zu", 1, len);
-    header[header_len] = '\0';
-
-    SHA1_CTX ctx;
-    local_sha1_init(&ctx);
-    local_sha1_update(&ctx, (const unsigned char *)header, header_len + 1);
-    local_sha1_update(&ctx, (const unsigned char *)data, len);
-    local_sha1_final(oid->sha1, &ctx);
-
-    char obj_path[256];
-    snprintf(obj_path, sizeof(obj_path), ".bro/objects/%02x%02x%02x%02x%02x",
-             oid->sha1[0], oid->sha1[1], oid->sha1[2], oid->sha1[3], oid->sha1[4]);
-    bro_mkdir(obj_path);
-    snprintf(obj_path + strlen(obj_path), 64, "/%02x%02x%02x%02x%02x",
-             oid->sha1[5], oid->sha1[6], oid->sha1[7], oid->sha1[8], oid->sha1[9]);
-
-    FILE *f = fopen(obj_path, "wb");
-    if (!f) {
-        free(data);
-        return -1;
-    }
-    fwrite(data, 1, len, f);
-    fclose(f);
-    free(data);
-
-    return 0;
+    return bro_odb_write(data, len, oid, 1);
 }
 
 int cmd_slap(int argc, char **argv) {
